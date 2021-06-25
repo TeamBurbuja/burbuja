@@ -1,132 +1,170 @@
 package soluciontecnologica;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
- * Clase para el registro de visita en terreno
+ * Clase contenedor implementa las listas y métodos de ingreso de datos
  * @author The Bubble
  * @version 1.0
  */
-public class VisitaEnTerreno {
+public class Contenedor {
 	/**
-	 * Atributos que definen la clase
+	 * Atributos que definen la clases
 	 */
-	private int id; // Obligatorio
-	private String rutCliente; // Obligatorio
-	private String dia;
-	private int hora; // HH
-	private int minutos; // MM
-	private String lugar; // Obligatorio
-	private String comentarios;
+	private ArrayList<IAsesoria> usuarios = new ArrayList();
+	private ArrayList<Capacitacion> capacitaciones = new ArrayList();
+	
+	Cliente cliente = new Cliente();
+	Profesional profesional = new Profesional();
+	Administrativo admin = new Administrativo();
+	
+	private boolean controlCliente = false;
 	
 	/**
-	 * Constructor vacío o por defecto
+	 * Método para agregar usuarios tipo cliente
 	 */
-	public VisitaEnTerreno() {
-		
-	}
-
-	/**
-	 * Constructor con entrada de datos
-	 * @param id de la visita en terreno
-	 * @param rutCliente de la visita en terreno
-	 * @param dia de la visita en terreno
-	 * @param hora de la visita en terreno
-	 * @param lugar de la visita en terreno
-	 * @param comentarios de la visita en terreno
-	 */
-	public VisitaEnTerreno(int id, String rutCliente, String dia, int hora,
-			int minutos, String lugar, String comentarios) {
-		super();
-		this.id = id;
-		this.rutCliente = rutCliente;
-		this.dia = dia;
-		this.hora = hora;
-		this.minutos = minutos;
-		this.lugar = lugar;
-		this.comentarios = comentarios;
-	}
-
-	// Getters and Setters
-	public int getId() {
-		return id;
-	}
-
-	public String getRutCliente() {
-		return rutCliente;
-	}
-
-	public String getDia() {
-		return dia;
-	}
-
-	public int getHora() {
-		return hora;
+	public void almacenarCliente() {
+		cliente = new Cliente();
+		cliente.setNombre(leerString("Ingrese nombre de usuario: "));
+		cliente.setFechaNacimiento(leerString("Ingrese su fecha de nacimiento:"
+				+ " (DD/MM/AAAA)"));
+		cliente.setRun(leerInt("Ingrese su RUN: (sin puntos y sin dígito"
+				+ " verificador)"));
+		cliente.setTipoUsuario("CLIENTE");
+		cliente.setRut(leerInt("Ingrese RUT de la empresa: (sin puntos y sin"
+				+ " dígito verificador)"));
+		cliente.setRazonSocial(leerString("Ingrese razón social: "));
+		cliente.setDireccion(leerString("Ingrese Dirección: "));
+		cliente.setComuna(leerString("Ingrese comuna: "));
+		cliente.setCantidadEmpleados(leerInt("Ingrese cantidad de empleados: "));
+		cliente.setTelefono(leerString("Ingrese teléfono: "));
+		usuarios.add(cliente);
+		escribir("El usuario ha sido ingresado con éxito");
+		controlCliente = true;
 	}
 	
-	public int getMinutos() {
-		return minutos;
+	/**
+	 * Método para agregar usuarios tipo profesional
+	 */
+	public void almacenarProfesional() {
+		profesional = new Profesional();
+		profesional.setNombre(leerString("Ingrese nombre de usuario: "));
+		profesional.setFechaNacimiento(leerString("Ingrese su fecha de"
+				+ " nacimiento:(DD/MM/AAAA)"));
+		profesional.setRun(leerInt("Ingrese su RUN: (sin puntos y sin dígito"
+				+ " verificador)"));
+		profesional.setTipoUsuario("PROFESIONAL");
+		profesional.setAniosExperiencia(leerInt("Ingrese años de experiencia"
+				+ " previa: "));
+		profesional.setDepartamento(leerString("Ingrese departamento: "));
+		profesional.setTitulo(leerString("Ingrese título profesional: "));
+		profesional.setFechaIngreso(leerString("Ingrese fecha de ingreso:"
+				+ "(DD/MM/AAAA)"));
+		usuarios.add(profesional);
+		escribir("El usuario ha sido ingresado con éxito");
 	}
-
-	public String getLugar() {
-		return lugar;
+	
+	/**
+	 * Método para agregar usuarios tipo administrativo
+	 */
+	public void almacenarAdministrativo() {
+		admin = new Administrativo();
+		admin.setNombre(leerString("Ingrese nombre de usuario: "));
+		admin.setFechaNacimiento(leerString("Ingrese su fecha de nacimiento:"
+				+ " (DD/MM/AAAA)"));
+		admin.setRun(leerInt("Ingrese su RUN: (sin puntos y sin dígito"
+				+ " verificador)"));
+		admin.setTipoUsuario("ADMINISTRATIVO");
+		admin.setNombreSuperior(leerString("Ingrese nombre del superior: "));
+		admin.setArea(leerString("Ingrese área: "));
+		admin.setExpPrevia(leerString("Comente su experiencia previa: "));
+		admin.setFuncion(leerString("Ingrese función o cargo: "));
+		usuarios.add(admin);
+		escribir("El usuario ha sido ingresado con éxito");
 	}
-
-	public String getComentarios() {
-		return comentarios;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setRutCliente(String rutCliente) {
-		this.rutCliente = rutCliente;
-		while (this.rutCliente.isEmpty() || this.rutCliente.isBlank()) {
-			this.rutCliente = leerString("Ingrese un rut válido");
-		}
-	}
-
-	public void setDia(String dia) {
-		this.dia = dia;
-	}
-
-	public void setHora(int hora) {
-		this.hora = hora;
-		while (this.hora > 23) {
-			this.hora = leerInt("Ingrese un valor de 0 a 23");
+	
+	/**
+	 * Método para agregar capacitaciones
+	 */
+	public void almacenarCapacitacion() {
+		if (controlCliente == false) {
+			escribir("Debes primero crear un cliente");
+		} else {
+		Capacitacion capacitacion = new Capacitacion();
+		capacitacion.setRutCliente(leerString("Ingrese RUT: (sin puntos y"
+				+ " sin dígito verificador)"));
+		capacitacion.setId(capacitacion.getRutCliente()+"A");
+		capacitacion.setDia(leerString("Ingrese día de la semana: "
+				+ "(lunes a domingo)"));
+		capacitacion.setHora(leerInt("Ingrese hora: (valor de 0 a 23)"));
+		capacitacion.setMinutos(leerInt("Ingrese minutos: (valor de 0 a 59)"));
+		capacitacion.setLugar(leerString("Ingrese lugar: "));
+		capacitacion.setDuracion(leerString("Ingrese duración (minutos): "));
+		capacitacion.setCantidadAsistentes(leerString("Ingrese cantidad de"
+				+ " asistentes: "));
+		capacitaciones.add(capacitacion);
+		escribir("La capacitación ha sido registrada con éxito");
 		}
 	}
 	
-	public void setMinutos(int minutos) {
-		this.minutos = minutos;
-		while (this.minutos > 59) {
-			this.minutos = leerInt("Ingrese un valor de 0 a 59");			
-		}
-	}
-
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-		while (this.lugar.isEmpty() || this.lugar.isBlank()
-			|| this.lugar.length() < 10 || this.lugar.length() > 50) {
-			this.lugar = leerString("Este campo es obligatorio, mínimo 10 y"
-					+ " máximo 50 caracteres");
-		}
-	}
-
-	public void setComentarios(String comentarios) {
-		this.comentarios = comentarios;
-		while (this.comentarios.length() > 100) {
-			this.comentarios = leerString("Ingrese máximo 100 caracteres");
-		}
-	}
-
 	/**
-	 * Método toString
+	 * Método para eliminar usuario
 	 */
-	@Override
-	public String toString() {
-		return "VisitaEnTerreno [id=" + id + ", rutCliente=" + rutCliente
-			+ ", dia=" + dia + ", hora=" + hora + ", minutos=" + minutos
-			+ ", lugar=" + lugar + ", comentarios=" + comentarios + "]";
+	public void eliminarUsuario() {
+		int run =  leerInt("Ingrese run de usuario: (sin puntos y sin"
+				+ " dígito verificador)");
+		usuarios.removeIf(usuario ->((Usuario) usuario).getRun() == run);
+		escribir("El usuario con run " + run + " ha sido eliminado con éxito");
+	}
+	
+	/**
+	 * Método para listar la totalidad de usuarios
+	 */
+	public void listarUsuarios() {
+		escribir("Listado de usuarios registrados:\n");
+		for (IAsesoria iAsesoria : usuarios) {
+			escribir(iAsesoria.toString());
+		}
+	}
+	
+	/**
+	 * Método para listar usuarios por tipo
+	 */
+	public void listarUsuariosTipo() {
+		String tipoUsuario = leerString("Ingrese número según tipo de"
+				+ " usuario:\n1) CLIENTE\n2) PROFESIONAL\n3) ADMINISTRATIVO");
+			if (tipoUsuario.equals("1")) {
+				for (IAsesoria iAsesoria : usuarios) {
+					if (((Usuario)iAsesoria).getTipoUsuario().equals
+							("CLIENTE")){
+						System.out.println(iAsesoria.toString());
+					}
+				}
+			} else if (tipoUsuario.equals("2")) {
+				for (IAsesoria iAsesoria : usuarios) {
+					if (((Usuario)iAsesoria).getTipoUsuario().equals
+							("PROFESIONAL")){
+						System.out.println(iAsesoria.toString());
+					}
+				}
+			} else if (tipoUsuario.equals("3")) {
+				for (IAsesoria iAsesoria : usuarios) {
+					if (((Usuario)iAsesoria).getTipoUsuario().equals
+							("ADMINISTRATIVO")){
+						System.out.println(iAsesoria.toString());
+					}
+				}
+			}
+	}
+	
+	/**
+	 * Método para listar totalidad de capacitaciones
+	 */
+	public void listarCapacitaciones() {
+		escribir("Listado de capacitaciones registradas:");
+		for (Capacitacion iCapacitacion : capacitaciones) {
+			escribir(iCapacitacion.toString());
+			escribir(iCapacitacion.mostrarDetalle());;
+		}
 	}
 	
 	/**
