@@ -55,10 +55,11 @@ Finalmente la clase Principal es en donde se implementa el menú anteriormente d
 ## Autores del proyecto
 
 * Isidora Villanueva
-* Jeaneth Ortíz
-* Eliseo Ávila
 * Gabriel Recabarren
+* Jeaneth Ortíz
 * Rigoberto Fernández
+* Eliseo Ávila
+
 
 
 # Agradecimientos
