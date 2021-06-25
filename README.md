@@ -27,7 +27,7 @@ M1: Programación Básica en Java / C49835-O1312960-M1 / AWAKELAB
 * [Visita en Terreno] - Clase para el registro de una visita en terreno
 * [Revisión] - Clase para el registro de una Revisión
 * [Contenedor] - Clase contenedor implementa las listas y métodos de ingreso de datos
-* [Menu] - Clase que implementa las opciones de menú
+* [Menú] - Clase que implementa las opciones de menú
 * [IAsesoria] - Interface que implementa el método analizarUsuario()
 
 Todas las clases antes indicadas cuentan con sus atributos, método toString(), un constructor vacío, un constructor que recibe todos los atributos de la clase como parámetros y sus getters and setters.
