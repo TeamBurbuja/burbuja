@@ -163,9 +163,9 @@ public class Capacitacion {
 	 */
 	@Override
 	public String toString() {
-		return "\nCapacitacion\nID: " + id + "\nRUT Cliente: " + rutCliente
-				+ "\nDia: " + dia + "\nHora: " + hora + ":"+ minutos + " hrs."
-				+ "\nLugar: " + lugar + "\nDuración: " + duracion + " minutos."
+		return "\nCapacitación\nID: " + id + "\nRUT Cliente: " + rutCliente
+				+ "\nDía: " + dia + "\nHora: " + hora + ":"+ minutos + " hrs."
+				+ "\nLugar: " + lugar + "\nDuración: " + duracion + " minutos"
 				+ "\nCantidad de Asistentes: " + cantidadAsistentes;
 	}
 	
