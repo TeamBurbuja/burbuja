@@ -17,6 +17,7 @@ M1: Programación Básica en Java / C49835-O1312960-M1 / AWAKELAB
 * Hasta el momento se han definido algunas entidades que darán vida al sistema, y las validaciones que se aplicarán en cada atributo, las cuáles son: 
 
   RESUMEN DE LAS CLASES
+  
 * [Usuario] - Clase que define la super clase Usuario
 * [Cliente] - Clase para el registro de usuario perfil Cliente
 * [Profesional] - Clase para el registro de usuario perfil Profesional
