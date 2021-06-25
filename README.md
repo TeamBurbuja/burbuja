@@ -14,7 +14,9 @@ M1: Programación Básica en Java / C49835-O1312960-M1 / AWAKELAB
 
 ## Desarrollo
 
-* Hasta el momento se han definido algunas entidades que darán vida al sistema, y las validaciones que se aplicarán en cada atributo, las cuáles son: RESUMEN DE LAS CLASES
+* Hasta el momento se han definido algunas entidades que darán vida al sistema, y las validaciones que se aplicarán en cada atributo, las cuáles son: 
+* 
+* RESUMEN DE LAS CLASES
 * [Usuario] - Clase que define la super clase Usuario
 * [Cliente] - Clase para el registro de usuario perfil Cliente
 * [Profesional] - Clase para el registro de usuario perfil Profesional
@@ -52,13 +54,14 @@ Finalmente la clase Principal es en donde se implementa el menú anteriormente d
 ## Autores del proyecto
 
 * Isidora Villanueva
-* Gabriel Recabarren
 * Jeaneth Ortíz
-* Rigoberto Fernández
 * Eliseo Ávila
+* Gabriel Recabarren
+* Rigoberto Fernández
+
 
 # Agradecimientos
 
-Un gran saludo en especial a nuestros instructores del Bootcamp "Desarrollo de Aplicaciones Full Stack Java Trainee", los señores Brian Guzmán y Felipe Kessi, y a todo el gran equipo de trabajo de AWAKELAB 🙌🏻
+Un gran saludo en especial a nuestros instructores del Bootcamp "Desarrollo de Aplicaciones Full Stack Java Trainee", les señores Brian Guzmán y Felipe Kessi, y a todo el gran equipo de trabajo de AWAKELAB 🙌🏻
 
 ### System.out.println("😁 GRACIAS TOTALES 🙃");
